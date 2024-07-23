@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Cocktail Search</title>
+        <link rel="stylesheet" href="styles.css">
+    </head>
+    <body>
+        <div class="container">
+            <header>
+                <div class="header-content">
+                    <h1>Cocktail Search</h1>
+                    <input type="text" id="searchInput" maxlength="1" placeholder="search">
+                </div>
+                <button id="showFavorites">Show Favorites</button>
+            </header>
+            
+            <div class="cocktail-grid" id="cocktailGrid"></div>
+            <div class="favorites-container" id="favoritesContainer">
+                <div class="favorites-grid" id="favoritesGrid"></div>
+            </div>
+        </div>
+    
+        <div id="modal" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <div id="modalContent"></div>
+                <button id="saveToFavorites">Save to Favorites</button>
+            </div>
+        </div>
+        <script src="script.js"></script>
+    </body>
+</html>

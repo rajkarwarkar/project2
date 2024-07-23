@@ -1,0 +1,159 @@
+* {
+    box-sizing: border-box;
+}
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    margin: 0;
+    padding: 0;
+}
+.container {
+    max-width: 10000px;
+    margin: 20px auto;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    border-radius: 5px;
+}
+header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+    position: relative;
+    flex-direction: column; /* Stack children vertically */
+}
+header h1 {
+    margin: 0;
+}
+.header-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+header input[type="text"] {
+    padding: 5px;
+    font-size: 16px;
+    width: 150px;
+    text-align: center;
+    margin-top: 10px;
+   border: 2px solid #ccc;
+    border-radius: 25px;
+    transition: all 0.3s ease; /* Smooth transition for all properties */
+    outline: none; /* Remove default outline */ 
+  
+}
+input[type="text"]:focus {
+    border-color: #007bff; /* Change border color */
+    box-shadow: 0 0 8px rgba(0, 123, 255, 0.5); /* Add shadow */
+    transform: scale(1.05); /* Slightly enlarge */
+    background-color: #eaf2ff; /* Change background color on focus */
+}
+
+header button {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+}
+.cocktail-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+}
+.cocktail-item {
+    text-align: center;
+    padding: 10px;
+    background-color: red;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0,0,0,0.1);
+    cursor: pointer;
+}
+.cocktail-item img {
+    max-width: 100%;
+    border-radius: 5px;
+     width:200px;
+     height:200px;
+}
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.5);
+}
+.modal-content {
+    background-color: #fefefe;
+    margin: 10% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 100%;
+    max-width: 800px;
+    border-radius: 5px;
+    position: relative;
+}
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+.close:hover,
+.close:focus {
+    color: red;
+    text-decoration: none;
+    cursor: pointer;
+}
+#modalContent {
+    margin-bottom: 20px;
+}
+button {
+    padding: 10px 20px;
+    background-color: yellow;
+    color: red;
+    border-width: 5px;
+    border-color: hsla(0,100%,50%,0.1);
+    border-radius: 2px;
+    cursor: pointer;
+}
+button:hover {
+    background-color: Aqua;
+}
+.favorites-container {
+    display: none;
+    margin-top: 20px;
+}
+.favorites-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+}
+.favorites-item {
+    text-align: center;
+    padding: 10px;
+    background-color: red;
+    border-radius: 5px;
+    position: relative;
+}
+.favorites-item img {
+    max-width: 100%;
+    border-radius: 5px;
+}
+.delete-btn {
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+    background-color: #ff0000;
+    color: #fff;
+    border: none;
+    padding: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.delete-btn:hover {
+    background-color: #cc0000;
+}
