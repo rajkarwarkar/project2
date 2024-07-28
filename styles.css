@@ -11,9 +11,9 @@ body {
     max-width: 10000px;
     margin: 20px auto;
     padding: 20px;
-    background-color:black;
     box-shadow: 0 0 10px rgba(0,0,0,0.1);
     border-radius: 5px;
+    background-color:black;
 }
 header {
     display: flex;
@@ -25,11 +25,20 @@ header {
 }
 header h1 {
     margin: 0;
+    color:red;
 }
+
 .header-content {
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+.header-input-container {
+    display: flex;
+    align-items: center; /* Align label and input box vertically in the center */
+    justify-content: center; /* Center the items horizontally */
+    gap: 10px; /* Space between the label and the input box */
+    margin-top: 10px; /* Add some space above */
 }
 header input[type="text"] {
     padding: 5px;
@@ -50,6 +59,15 @@ input[type="text"]:focus {
     background-color: #eaf2ff; /* Change background color on focus */
 }
 
+header label {
+    font-size:20px;
+    color: #f0f0f0; /* Light color for contrast on black background */
+    font-weight: bold;
+    margin: 0; /* Reset margin to avoid unwanted spacing */
+    margin-bottom:-10px;
+}
+
+
 header button {
     position: absolute;
     right: 0;
@@ -64,7 +82,7 @@ header button {
 .cocktail-item {
     text-align: center;
     padding: 10px;
-    background-color: red;
+    background-color:white;
     border-radius: 5px;
     box-shadow: 0 0 5px rgba(0,0,0,0.1);
     cursor: pointer;
@@ -114,15 +132,16 @@ header button {
 }
 button {
     padding: 10px 20px;
-    background-color: yellow;
-    color: red;
+    background-color: #00BFFF;
+    color: white;
     border-width: 5px;
     border-color: hsla(0,100%,50%,0.1);
     border-radius: 2px;
     cursor: pointer;
+    border-radius:20px;
 }
 button:hover {
-    background-color: Aqua;
+    background-color: lightskyblue;
 }
 .favorites-container {
     display: none;
@@ -144,17 +163,32 @@ button:hover {
     max-width: 100%;
     border-radius: 5px;
 }
-.delete-btn {
-    position: absolute;
-    bottom: 5px;
-    right: 5px;
-    background-color: #ff0000;
-    color: #fff;
-    border: none;
-    padding: 5px;
-    border-radius: 5px;
-    cursor: pointer;
+#showFavorites
+{
+    font-size: 17px;
+    border-radius:20px;
 }
-.delete-btn:hover {
-    background-color: #cc0000;
+#backToSearchBtn
+{
+    font-size: 17px;
+    border-radius:20px;
+}
+@media (max-width: 768px) {
+    .container {
+        padding: 10px;
+    }
+    header h1 {
+        font-size: 24px;
+    }
+    .cocktail-grid, .favorites-grid {
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    }
+    .cocktail-item img, .favorites-item img {
+        width: 150px;
+        height: 150px;
+    }
+    .modal-content {
+        width: 95%;
+        margin: 5% auto;
+    }
 }
