@@ -1,5 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
     const searchInput = document.getElementById('searchInput');
+    const searchLabel = document.getElementById('searchLabel');
     const searchHeading = document.getElementById('searchHeading');
     const cocktailGrid = document.getElementById('cocktailGrid');
     const modal = document.getElementById('modal');
@@ -126,6 +127,7 @@ document.addEventListener('DOMContentLoaded', () => {
             favoritesContainer.style.display = 'none';
             searchInput.style.display = 'block';
             searchHeading.style.display = 'block';
+            searchLabel.style.display = 'block'; // Ensure label is shown when searching
             backToSearchBtn.style.display = 'none';
         }
     });
@@ -144,6 +146,7 @@ document.addEventListener('DOMContentLoaded', () => {
         cocktailGrid.style.display = 'none';
         searchInput.style.display = 'none';
         searchHeading.style.display = 'none';
+        searchLabel.style.display = 'none'; // Hide the label
         backToSearchBtn.style.display = 'block';
         showFavoritesBtn.style.display = 'none'; // Hide "Show Favorites" button
     });
@@ -154,6 +157,7 @@ document.addEventListener('DOMContentLoaded', () => {
         cocktailGrid.style.display = 'grid';
         searchInput.style.display = 'block';
         searchHeading.style.display = 'block';
+        searchLabel.style.display = 'block'; // Show the label again
         backToSearchBtn.style.display = 'none';
         showFavoritesBtn.style.display = 'block'; // Show "Show Favorites" button again
     });
