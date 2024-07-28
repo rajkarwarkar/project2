@@ -1,12 +1,13 @@
 document.addEventListener('DOMContentLoaded', () => {
     const searchInput = document.getElementById('searchInput');
+    const searchHeading = document.getElementById('searchHeading');
     const cocktailGrid = document.getElementById('cocktailGrid');
     const modal = document.getElementById('modal');
     const modalContent = document.getElementById('modalContent');
-    const saveToFavoritesBtn = document.getElementById('saveToFavorites');
     const favoritesContainer = document.getElementById('favoritesContainer');
     const favoritesGrid = document.getElementById('favoritesGrid');
     const showFavoritesBtn = document.getElementById('showFavorites');
+    const backToSearchBtn = document.getElementById('backToSearchBtn');
 
     let favorites = JSON.parse(localStorage.getItem('favorites')) || [];
 
@@ -47,12 +48,28 @@ document.addEventListener('DOMContentLoaded', () => {
             </ul>
             <h3>Instructions:</h3>
             <p>${cocktail.strInstructions}</p>
+            <div id="modalButtonContainer"></div>
         `;
         modal.style.display = 'block';
 
-        saveToFavoritesBtn.onclick = () => {
-            saveToFavorites(cocktail);
-        };
+        const modalButtonContainer = document.getElementById('modalButtonContainer');
+        modalButtonContainer.innerHTML = ''; // Clear any existing buttons
+        const modalActionButton = document.createElement('button');
+
+        if (favorites.some(fav => fav.idDrink === cocktail.idDrink)) {
+            modalActionButton.textContent = 'Delete from Favorites';
+            modalActionButton.onclick = () => {
+                deleteFavorite(cocktail.idDrink);
+                modal.style.display = 'none';
+            };
+        } else {
+            modalActionButton.textContent = 'Save to Favorites';
+            modalActionButton.onclick = () => {
+                saveToFavorites(cocktail);
+            };
+        }
+
+        modalButtonContainer.appendChild(modalActionButton);
     }
 
     function getIngredients(cocktail) {
@@ -85,15 +102,9 @@ document.addEventListener('DOMContentLoaded', () => {
             favoriteItem.innerHTML = `
                 <img src="${cocktail.strDrinkThumb}" alt="${cocktail.strDrink}">
                 <p>${cocktail.strDrink}</p>
-                <button class="delete-btn">Delete</button>
             `;
-            favoriteItem.querySelector('.delete-btn').addEventListener('click', () => {
-                deleteFavorite(cocktail.idDrink);
-            });
-            favoriteItem.addEventListener('click', (e) => {
-                if (!e.target.classList.contains('delete-btn')) {
-                    showModal(cocktail);
-                }
+            favoriteItem.addEventListener('click', () => {
+                showModal(cocktail);
             });
             favoritesGrid.appendChild(favoriteItem);
         });
@@ -113,6 +124,9 @@ document.addEventListener('DOMContentLoaded', () => {
             displayCocktails(cocktails);
             cocktailGrid.style.display = 'grid';
             favoritesContainer.style.display = 'none';
+            searchInput.style.display = 'block';
+            searchHeading.style.display = 'block';
+            backToSearchBtn.style.display = 'none';
         }
     });
 
@@ -128,5 +142,19 @@ document.addEventListener('DOMContentLoaded', () => {
         displayFavorites();
         favoritesContainer.style.display = 'block';
         cocktailGrid.style.display = 'none';
+        searchInput.style.display = 'none';
+        searchHeading.style.display = 'none';
+        backToSearchBtn.style.display = 'block';
+        showFavoritesBtn.style.display = 'none'; // Hide "Show Favorites" button
+    });
+
+    // Handle "Back to Search" button click
+    backToSearchBtn.addEventListener('click', () => {
+        favoritesContainer.style.display = 'none';
+        cocktailGrid.style.display = 'grid';
+        searchInput.style.display = 'block';
+        searchHeading.style.display = 'block';
+        backToSearchBtn.style.display = 'none';
+        showFavoritesBtn.style.display = 'block'; // Show "Show Favorites" button again
     });
 });
